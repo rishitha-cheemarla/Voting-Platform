@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vote in Poll</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='voting.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='terryLogo.png') }}" alt="Terry Logo">
+    </header>
+    <h1>Vote in Poll</h1>
+    <form method="POST" action="/vote" onsubmit="return validateForm();">
+        <label for="poll_id">Poll ID:</label>
+        <input type="text" id="poll_id" name="poll_id" required><br>
+
+        <label for="811">811 Number:</label>
+        <input type="text" id="811" name="811" required><br>
+
+
+        <input type="hidden" id="passcode" name="passcode" value="" required>
+        <button type="button" id="checkPasscode">Check Passcode</button><br>
+
+        <label for="day">Select Day:</label>
+        <select id="day" name="day" required onchange="showGroupSelection()" disabled>
+            <option value="Select">Select</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+        </select><br>
+
+        <div id="groupSelection" style="display: none;">
+            <label for="vote_option">Select Group for Voting:</label>
+            <select id="vote_option" name="vote_option" required>
+                <option value="Select">Select</option>
+                <option value="Group 1">Group 1</option>
+                <option value="Group 2">Group 2</option>
+                <option value="Group 3">Group 3</option>
+                <option value="Group 4">Group 4</option>
+                <option value="Group 5">Group 5</option>
+                <option value="Group 6">Group 6</option>
+                <option value="Group 7">Group 7</option>
+                <option value="Group 8">Group 8</option>
+                <option value="Group 9">Group 9</option>
+                <option value="Group 10">Group 10</option>
+                <option value="Group 11">Group 11</option>
+                <option value="Group 12">Group 12</option>
+                <option value="Group 13">Group 13</option>
+                <option value="Group 14">Group 14</option>
+                <option value="Group 15">Group 15</option>
+                <option value="Group 16">Group 16</option>
+                <option value="Group 17">Group 17</option>
+                <option value="Group 18">Group 18</option>
+                <option value="Group 19">Group 19</option>
+                <option value="Group 20">Group 20</option>
+            </select><br>
+            
+<label for="vote_option">Select Group for Voting:</label>
+<select id="vote_option1" name="vote_option1" required>
+                <option value="Select">Select</option>
+                <option value="Group 1">Group 1</option>
+                <option value="Group 2">Group 2</option>
+                <option value="Group 3">Group 3</option>
+                <option value="Group 4">Group 4</option>
+                <option value="Group 5">Group 5</option>
+                <option value="Group 6">Group 6</option>
+                <option value="Group 7">Group 7</option>
+                <option value="Group 8">Group 8</option>
+                <option value="Group 9">Group 9</option>
+                <option value="Group 10">Group 10</option>
+                <option value="Group 11">Group 11</option>
+                <option value="Group 12">Group 12</option>
+                <option value="Group 13">Group 13</option>
+                <option value="Group 14">Group 14</option>
+                <option value="Group 15">Group 15</option>
+                <option value="Group 16">Group 16</option>
+                <option value="Group 17">Group 17</option>
+                <option value="Group 18">Group 18</option>
+                <option value="Group 19">Group 19</option>
+                <option value="Group 20">Group 20</option>
+</select><br>
+
+<label for="vote_option">Select Group for Voting:</label>
+<select id="vote_option2" name="vote_option2" required>
+    <option value="Select">Select</option>
+    <option value="Group 1">Group 1</option>
+                <option value="Group 2">Group 2</option>
+                <option value="Group 3">Group 3</option>
+                <option value="Group 4">Group 4</option>
+                <option value="Group 5">Group 5</option>
+                <option value="Group 6">Group 6</option>
+                <option value="Group 7">Group 7</option>
+                <option value="Group 8">Group 8</option>
+                <option value="Group 9">Group 9</option>
+                <option value="Group 10">Group 10</option>
+                <option value="Group 11">Group 11</option>
+                <option value="Group 12">Group 12</option>
+                <option value="Group 13">Group 13</option>
+                <option value="Group 14">Group 14</option>
+                <option value="Group 15">Group 15</option>
+                <option value="Group 16">Group 16</option>
+                <option value="Group 17">Group 17</option>
+                <option value="Group 18">Group 18</option>
+                <option value="Group 19">Group 19</option>
+                <option value="Group 20">Group 20</option>
+</select><br>
+
+        </div>
+
+        <button type="submit" id="submitVote" style="display: none;">Submit Vote</button>
+    </form>
+
+    <script>
+        const validPasscode = "turtle"; // Replace with the actual passcode. would probably change this for each session
+
+        document.getElementById("checkPasscode").addEventListener("click", function () {
+            const passcode = prompt("Enter Passcode:");
+            if (passcode === validPasscode) {
+                // Valid passcode, allow selecting day and group
+                const dayField = document.getElementById("day");
+                const groupField = document.getElementById("vote_option");
+                dayField.disabled = false;
+                groupField.disabled = false;
+                document.getElementById("submitVote").style.display = "block";
+                alert("Passcode is valid. You can now select the day and group.");
+            } else {
+                alert("Invalid passcode. Please enter the correct passcode.");
+            }
+        });
+
+        function showGroupSelection() {
+            const selectedDay = document.getElementById("day").value;
+            const groupSelection = document.getElementById("groupSelection");
+
+            if (selectedDay !== "Select") {
+                // Show the group selection if a valid day is selected
+                groupSelection.style.display = "block";
+            } else {
+                // Hide the group selection if "Select" is chosen
+                groupSelection.style.display = "none";
+            }
+        }
+
+        function validateForm() {
+    if (validPasscode) {
+        return true; // Allowing the form submission
+    } else {
+        alert("Invalid passcode. Please enter the correct passcode.");
+        return false; // Preventing the form submission
+    }
+}
+
+    </script>
+</body>
+</html>

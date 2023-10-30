@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Poll</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='poll.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='terryLogo.png') }}" alt="Terry Logo">
+    </header>
+    <h1>Create Poll</h1>
+    <form method="POST" action="/create_poll">
+        <label for="poll_id">Poll ID:</label>
+        <input type="text" id="poll_id" name="poll_id" required><br>
+
+        <button type="submit">Create Poll</button>
+    </form>
+</body>
+</html>

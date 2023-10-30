@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information Form</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='terryLogo.png') }}" alt="Terry Logo">
+    </header>
+    <h1>Student Information Form</h1>
+    <form method="POST" onsubmit="return handleSubmit();">
+        <label for="name">Name:</label> 
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="811">811 Number:</label>
+        <input type="text" id="811" name="811" required><br>
+
+        <label for="class-time">Class Time and Day:</label>
+        <select id="class-time" name="class-time" required>
+            <option value="Select">Select</option>
+            <option value="MWF 9:10-10:00">MWF 9:10-10:00</option>
+            <option value="MWF 10:20-11:10">MWF 10:20-11:10</option>
+            <option value="MWF 11:30-12:20">MWF 11:30-12:20</option>
+            <option value="TR 9:35-10:50">TR 9:35-10:50</option>
+            <option value="TR 3:55-5:10">TR 3:55-5:10</option>
+        </select><br>
+
+        <label for="group-number">Group Number:</label>
+        <select id="group-number" name="group-number" required>
+            <option value="Select">Select</option>
+            <option value="Group 1">Group 1</option>
+            <option value="Group 2">Group 2</option>
+            <option value="Group 3">Group 3</option>
+            <option value="Group 4">Group 4</option>
+            <option value="Group 5">Group 5</option>
+            <option value="Group 6">Group 6</option>
+            <option value="Group 7">Group 7</option>
+            <option value="Group 8">Group 8</option>
+            <option value="Group 9">Group 9</option>
+            <option value="Group 10">Group 10</option>
+            <option value="Group 11">Group 11</option>
+            <option value="Group 12">Group 12</option>
+            <option value="Group 13">Group 13</option>
+            <option value="Group 14">Group 14</option>
+            <option value="Group 15">Group 15</option>
+            <option value="Group 16">Group 16</option>
+            <option value="Group 17">Group 17</option>
+            <option value="Group 18">Group 18</option>
+            <option value="Group 19">Group 19</option>
+            <option value="Group 20">Group 20</option>
+        </select><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function handleSubmit() {
+            alert("Successfully Submitted!");
+        }
+    </script>
+</body>
+</html>
+
